@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "skunk extension",
+  "version": "1.0",
+  "description": "A Chrome Extension to support learning with video suggestions.",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_popup": "index.html"
+  }
+}
