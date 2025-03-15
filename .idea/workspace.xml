@@ -7,6 +7,8 @@
     <list default="true" id="b70b5cf7-380a-4a4e-8cf3-1125479bb731" name="Changes" comment="script.js file is added with real-time monitor algorithm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/searchHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/searchHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apply-settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/apply-settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/settings.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
