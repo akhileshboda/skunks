@@ -21,24 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     saveButton.textContent = 'Save Settings';
     document.body.appendChild(saveButton);
 
-    // Add preview section
-    const previewContainer = document.createElement('div');
-    previewContainer.id = 'preview';
-    previewContainer.style.marginTop = '20px';
-    previewContainer.style.padding = '15px';
-    previewContainer.style.border = '1px solid #ddd';
-    previewContainer.style.borderRadius = '4px';
-
-    const previewHeading = document.createElement('h4');
-    previewHeading.textContent = 'Preview';
-    previewContainer.appendChild(previewHeading);
-
-    const previewText = document.createElement('p');
-    previewText.id = 'previewText';
-    previewText.textContent = 'This is a preview of how your settings will look.';
-    previewContainer.appendChild(previewText);
-
-    document.body.appendChild(previewContainer);
 
     // Load saved settings if they exist
     loadSettings();
@@ -46,20 +28,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize preview with current settings
     updatePreview();
 
+    // Apply settings to entire document initially
+    applySettings();
+
     // Event listeners
     colorRadios.forEach(radio => {
-        radio.addEventListener('change', updatePreview);
+        radio.addEventListener('change', function() {
+            updatePreview();
+            applySettings(); // Apply settings to entire document when color changes
+        });
     });
 
-    fontSelect.addEventListener('change', updatePreview);
+    fontSelect.addEventListener('change', function() {
+        updatePreview();
+        applySettings(); // Apply settings to entire document when font changes
+    });
 
     fontSizeSlider.addEventListener('input', function() {
         // Update the display value while sliding
         fontSizeValue.textContent = this.value + 'px';
         updatePreview();
+        applySettings(); // Apply settings to entire document while sliding
     });
 
-    saveButton.addEventListener('click', saveSettings);
+    saveButton.addEventListener('click', function() {
+        saveSettings();
+        applySettings(); // Apply settings to entire document when saving
+    });
 
     // Functions
     function getColorValues(colorName) {
@@ -97,13 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedFont = getFontFamily(fontSelect.value);
         const selectedFontSize = fontSizeSlider.value;
 
-        const previewText = document.getElementById('previewText');
-        previewText.style.fontFamily = selectedFont;
-        previewText.style.fontSize = `${selectedFontSize}px`;
-        previewText.style.backgroundColor = selectedColor.bg;
-        previewText.style.color = selectedColor.text;
-        previewText.style.padding = '10px';
-        previewText.style.borderRadius = '4px';
     }
 
     function saveSettings() {
@@ -116,34 +104,47 @@ document.addEventListener('DOMContentLoaded', function() {
         // Save to localStorage with a simple check to verify it saved
         localStorage.setItem('tubeTutorSettings', JSON.stringify(settings));
 
+        // If Chrome storage is available, use it too
+        if (chrome && chrome.storage && chrome.storage.sync) {
+            chrome.storage.sync.set(settings, function() {
+                console.log("Settings saved to Chrome storage");
+            });
+        }
+        alert('Settings saved successfully!');
+
         // Check what was saved - for debugging
         console.log("Settings saved:", JSON.parse(localStorage.getItem('tubeTutorSettings')));
     }
 
     function loadSettings() {
-        if (chrome && chrome.storage) {
+        if (chrome && chrome.storage && chrome.storage.sync) {
             chrome.storage.sync.get(['color', 'font', 'fontSize'], function(settings) {
-                applySettingsToForm(settings);
-                applySettings();
+                if (Object.keys(settings).length > 0) {
+                    applySettingsToForm(settings);
+                    updatePreview();
+                    applySettings();
+                }
             });
         } else {
             // Fallback to localStorage
             const savedSettings = localStorage.getItem('tubeTutorSettings');
             if (savedSettings) {
                 applySettingsToForm(JSON.parse(savedSettings));
+                updatePreview();
+                applySettings();
             }
-            applySettings();
         }
     }
 
-    // Function to apply settings to the extension (if this is a Chrome extension)
     function applySettingsToForm(settings) {
         // Apply color setting
-        const colorRadio = document.querySelector(`input[name="colour"][value="${settings.color}"]`);
-        if (colorRadio) colorRadio.checked = true;
+        if (settings.color) {
+            const colorRadio = document.querySelector(`input[name="colour"][value="${settings.color}"]`);
+            if (colorRadio) colorRadio.checked = true;
+        }
 
         // Apply font setting
-        if (settings.font && fontSelect.querySelector(`option[value="${settings.font}"]`)) {
+        if (settings.font) {
             fontSelect.value = settings.font;
         }
 
@@ -154,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Add this function right after the applySettingsToExtension function
     function applySettings() {
         // Get current settings from form controls
         const currentColor = document.querySelector('input[name="colour"]:checked').value;
@@ -170,21 +170,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.fontSize = currentFontSize + 'px';
         document.body.style.backgroundColor = colorValues.bg;
         document.body.style.color = colorValues.text;
-    }
 
-// Then modify these parts of your existing code:
-
-// After loadSettings() call:
-    loadSettings();
-// Add this line:
-    applySettings();
-
-
-// Modify the loadSettings function to call applySettings at the end:
-    function loadSettings() {
-        // ... existing code ...
-
-        // Add this line at the end:
-        applySettings();
+        console.log("Settings applied to document:", {
+            color: currentColor,
+            font: currentFont,
+            fontSize: currentFontSize
+        });
     }
 });
