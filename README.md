@@ -1,4 +1,4 @@
-#SmartStudy Chrome Extension
+# SmartStudy Chrome Extension
 UniHack March 2025 Project
 
 Authors
