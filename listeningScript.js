@@ -13,14 +13,19 @@ const keywords = [
     "JS", "HTML", "CSS", "API", "UI", "UX", "SQL", "React", "Python", "JavaScript"
 ];
 
-const keywordCounts = {};
-keywords.forEach(keyword => keywordCounts[keywword = 0]);
+//add like meta tag and look for keyword in meta tag
+//split into array and look for keyword
+//look at the url and see if its .edu, .org, or like .gov
 
-let lastAlertTime = 0;
+//this algorithm stored keywords
+const keywordCounts = {};
+keywords.forEach(keyword => keywordCounts[keyword] = 0); // Fixed typo: keywword → keyword
+
+let lastAlertTimestamp = 0; // Renamed from lastAlertTime for consistency
 let pendingAlertTimer = null;
 const cooldown = 60000;
 
-function checkKeyword(text) {
+function checkKeywords(text) { // Fixed function name: checkKeyword → checkKeywords
     if (!text || typeof text !== "string") {
         return false;
     }
@@ -44,7 +49,7 @@ function checkKeyword(text) {
 
 function getTopKeyword() {
     let topKeyword = null;
-    let count = 0;
+    let maxCount = 0; // Fixed variable name: count → maxCount
 
     for (const [keyword, count] of Object.entries(keywordCounts)) {
         if (count > maxCount) {
@@ -55,7 +60,7 @@ function getTopKeyword() {
     return {keyword: topKeyword, count: maxCount};
 }
 
-function topKeyword() {
+function logTopKeyword() { // Renamed function: topKeyword → logTopKeyword
     const {keyword, count} = getTopKeyword();
 
     if (keyword && count > 0) {
@@ -68,5 +73,88 @@ function topKeyword() {
 }
 
 function showTopKeyword() {
+    const currentTime = Date.now(); // Fixed typo: currenTime → currentTime
 
+    // Fixed logic: only clear timer if it exists
+    if (pendingAlertTimer) {
+        clearTimeout(pendingAlertTimer);
+        pendingAlertTimer = null;
+    }
+
+    // Fixed parentheses placement and variable name
+    if ((currentTime - lastAlertTimestamp) >= cooldown) {
+        const {keyword, count} = getTopKeyword(); // Fixed function name: getTopword → getTopKeyword
+
+        if (keyword && count > 0) {
+            alert(`🏆 Top keyword: "${keyword}" with ${count} occurrence(s)`);
+            lastAlertTimestamp = currentTime; // Fixed typo: lasstAlertTimestamp → lastAlertTimestamp
+            console.log(`Alert shown at ${new Date().toLocaleTimeString()}`);
+        }
+    } else {
+        const remainingTime = cooldown - (currentTime - lastAlertTimestamp);
+        console.log(`Alert cooldown: ${Math.round(remainingTime/1000)} seconds remaining`);
+
+        pendingAlertTimer = setTimeout(() => {
+            showTopKeyword();
+        }, remainingTime);
+    }
 }
+
+function scanPage() {
+    console.log(`\nScanning page at ${new Date().toLocaleTimeString()}...`);
+    let foundAny = false;
+
+    const elements = document.querySelectorAll("body, body *:not(script):not(style):not(noscript)");
+    elements.forEach(el => {
+        if (el.innerText && checkKeywords(el.innerText)) { // Fixed function name
+            foundAny = true;
+        }
+    });
+
+    console.log("Scan complete");
+
+    if (foundAny) {
+        logTopKeyword(); // Fixed function name
+        showTopKeyword();
+    }
+    return foundAny;
+}
+
+const observer = new MutationObserver(mutations => {
+    let foundAny = false;
+
+    mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE && node.textContent) {
+                if (checkKeywords(node.textContent)) { // Fixed function name
+                    foundAny = true;
+                }
+            } else if (node.nodeType === Node.ELEMENT_NODE && node.innerText) {
+                if (checkKeywords(node.innerText)) { // Fixed function name
+                    foundAny = true;
+                }
+            }
+        });
+    });
+
+    if(foundAny) {
+        logTopKeyword(); // Fixed function name
+    }
+});
+
+console.log("Keyword monitoring system starting...");
+
+scanPage();
+
+observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    characterData: true
+});
+
+console.log("Algorithm activated");
+
+setInterval(() => {
+    console.log("Algorithm will be run in 1 min");
+    scanPage();
+}, cooldown);
