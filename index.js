@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('nav.html')
         .then(response => response.text())
         .then(data => {
-            document.getElementById('nav-bar').innerHTML = data;
+            document.getElementById('nav-import').innerHTML = data;
 
             // Now that the nav is loaded, add the event listener
             document.getElementById('openSettings').addEventListener('click', function(e) {
