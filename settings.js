@@ -73,15 +73,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Map color names to background and text colors
         const colorMap = {
             'default': { bg: '#FFFFFF', text: '#333333' },
-            'pink': { bg: '#FFD6E7', text: '#CC0066' },
+            'pink': { bg: '#FFD6E7', text: '#ed82b8' },
             'blue': { bg: '#D6E4FF', text: '#0044CC' },
             'green': { bg: '#D6FFE4', text: '#006633' },
-            'red': { bg: '#FFD6D6', text: '#CC0000' },
+            'red': { bg: '#f26f61', text: '#692720' },
             'purple': { bg: '#E4D6FF', text: '#4400CC' },
-            'yellow': { bg: '#FFFFD6', text: '#CC8800' },
-            'orange': { bg: '#FFE4D6', text: '#CC4400' },
-            'beige': { bg: '#F5F5DC', text: '#8B8970' },
-            'bronze': { bg: '#CD7F32', text: '#FFFFFF' }
+            'yellow': { bg: '#fffcc2', text: '#869c40' },
+            'orange': { bg: '#eba628', text: '#964b12' },
+            'beige': { bg: '#f0eadd', text: '#78653c' },
+            'bronze': { bg: '#bf9934', text: '#4a3704' }
         };
 
         return colorMap[colorName] || colorMap['default'];
