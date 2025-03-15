@@ -1,3 +1,15 @@
+/* GLOBAL CSS*/
+html {
+  text-align: center;
+}
+
+body {
+  width: 300px;
+  height: 350px;
+  border: 2px solid lightskyblue;
+  overflow: hidden;
+}
+
 /* CSS for the 'font size' slider in settings page */
 .slidecontainer {
     width: 100%;
