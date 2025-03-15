@@ -1,10 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "SmartStudy",
+  "name": "TubeTutor",
   "version": "1.0",
   "description": "A Chrome Extension to support learning with video suggestions.",
   "permissions": ["activeTab"],
   "action": {
     "default_popup": "index.html"
-  }
+  },
+  "icons": {"32": "images/logo.jpeg"},
+  "web_accessible_resources": [
+    {
+      "resources": ["script.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
