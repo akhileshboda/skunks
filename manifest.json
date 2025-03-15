@@ -4,6 +4,8 @@
   "version": "1.0",
   "description": "A Chrome Extension to support learning with video suggestions.",
   "permissions": [
+    "tabs",
+    "storage",
     "activeTab",
     "scripting",
     "contextMenus"
@@ -14,7 +16,12 @@
   "action": {
     "default_popup": "index.html"
   },
-  "icons": {"32": "images/logo.jpeg"},
+  "icons": {
+    "16": "images/logo.jpeg",
+    "32": "images/logo.jpeg",
+    "64": "images/logo.jpeg",
+    "128": "images/logo.jpeg"
+  },
   "web_accessible_resources": [
     {
       "resources": ["listeningScript.js"],
