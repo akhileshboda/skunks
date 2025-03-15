@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 chrome.windows.create({
                     url: chrome.runtime.getURL('settings.html'),
                     type: 'popup',
-                    width: windowWidth,
-                    height: windowHeight,
-                    left: x_axis,
-                    top: y_axis
+                    width: 700,
+                    height: 500,
+                    left: Math.round((window.screen.availWidth - 700) / 2),
+                    top:  Math.round((window.screen.availHeight - 500) / 2)
                 });
             });
         });

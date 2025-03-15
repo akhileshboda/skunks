@@ -18,9 +18,18 @@ document.addEventListener('DOMContentLoaded', function() {
     saveButton.id = 'saveButton';
     saveButton.className = 'btn btn-primary';
     saveButton.style.marginTop = '20px';
+    saveButton.style.marginLeft= '295px';
+    saveButton.style.marginRight= '295px';
     saveButton.textContent = 'Save Settings';
     document.body.appendChild(saveButton);
 
+    const container = document.createElement('div');
+    container.style.textAlign = 'center';
+    container.style.width = '100%'; // Make sure it spans the full width
+    container.appendChild(saveButton);
+
+// Add the container to the document
+    document.body.appendChild(container);
 
     // Load saved settings if they exist
     loadSettings();
@@ -55,21 +64,24 @@ document.addEventListener('DOMContentLoaded', function() {
         saveSettings();
         applySettings(); // Apply settings to entire document when saving
     });
+    saveButton.addEventListener('click', function() {
+        chrome.runtime.reload();
+    });
 
     // Functions
     function getColorValues(colorName) {
         // Map color names to background and text colors
         const colorMap = {
             'default': { bg: '#FFFFFF', text: '#333333' },
-            'pink': { bg: '#FFD6E7', text: '#CC0066' },
+            'pink': { bg: '#FFD6E7', text: '#ed82b8' },
             'blue': { bg: '#D6E4FF', text: '#0044CC' },
             'green': { bg: '#D6FFE4', text: '#006633' },
-            'red': { bg: '#FFD6D6', text: '#CC0000' },
+            'red': { bg: '#f26f61', text: '#692720' },
             'purple': { bg: '#E4D6FF', text: '#4400CC' },
-            'yellow': { bg: '#FFFFD6', text: '#CC8800' },
-            'orange': { bg: '#FFE4D6', text: '#CC4400' },
-            'beige': { bg: '#F5F5DC', text: '#8B8970' },
-            'bronze': { bg: '#CD7F32', text: '#FFFFFF' }
+            'yellow': { bg: '#fffcc2', text: '#869c40' },
+            'orange': { bg: '#eba628', text: '#964b12' },
+            'beige': { bg: '#f0eadd', text: '#78653c' },
+            'bronze': { bg: '#bf9934', text: '#4a3704' }
         };
 
         return colorMap[colorName] || colorMap['default'];
