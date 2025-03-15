@@ -4,8 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b70b5cf7-380a-4a4e-8cf3-1125479bb731" name="Changes" comment="push home screen UI, complete navbar">
+    <list default="true" id="b70b5cf7-380a-4a4e-8cf3-1125479bb731" name="Changes" comment="establish extension window size, basic entry created">
+      <change afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/nav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheets/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/styles.css" afterDir="false" />
+    <list default="true" id="b70b5cf7-380a-4a4e-8cf3-1125479bb731" name="Changes" comment="- help">
+      <change afterPath="$PROJECT_DIR$/apply-settings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/settings.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="nav-bar" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,6 +55,12 @@
     &quot;accountId&quot;: &quot;ce6432b5-0e3d-4091-98d9-0a3027ba8165&quot;
   }
 }</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/akhileshboda/skunks.git",
+    "accountId": "d7655ba2-4546-4de3-bfe7-35060515d890"
+  }
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
@@ -57,7 +76,19 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "nav-bar",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "settings",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -86,7 +117,8 @@
       <workItem from="1741961709821" duration="1187000" />
       <workItem from="1741999690367" duration="8948000" />
       <workItem from="1742013065991" duration="116000" />
-      <workItem from="1742013186360" duration="11669000" />
+      <workItem from="1742013186360" duration="10442000" />
+      <workItem from="1742020045792" duration="6899000" />
     </task>
     <task id="LOCAL-00001" summary="script.js file is added with real-time monitor algorithm">
       <option name="closed" value="true" />
@@ -104,13 +136,13 @@
       <option name="project" value="LOCAL" />
       <updated>1742002055780</updated>
     </task>
-    <task id="LOCAL-00003" summary="push home screen UI, complete navbar">
+    <task id="LOCAL-00003" summary="- help">
       <option name="closed" value="true" />
-      <created>1742024883464</created>
+      <created>1742026367428</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1742024883464</updated>
+      <updated>1742026367428</updated>
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
@@ -131,7 +163,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="script.js file is added with real-time monitor algorithm" />
-    <MESSAGE value="push home screen UI, complete navbar" />
-    <option name="LAST_COMMIT_MESSAGE" value="push home screen UI, complete navbar" />
+    <MESSAGE value="- help" />
+    <option name="LAST_COMMIT_MESSAGE" value="- help" />
   </component>
 </project>
