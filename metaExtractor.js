@@ -136,7 +136,7 @@
 //         const {keyword, count} = getTopKeyword();
 //
 //         if (keyword && count > 0) {
-//             alert(`🏆 Top keyword: "${keyword}" with ${count} occurrence(s)`);
+//             alert(`Top keyword: "${keyword}" with ${count} occurrence(s)`);
 //             lastAlertTimestamp = currentTime;
 //             console.log(`Alert shown at ${new Date().toLocaleTimeString()}`);
 //         }
@@ -242,39 +242,19 @@
 // WORKING ON A BRAND NEW LISTENER!!!!
 
 function extractMetaInfo() {
-    const keywordsMeta = document.querySelector('meta[name = "keywords"]');
-    let keywords = keywordsMeta ? keywordsMeta.getAttribute('content'): '';
+    const metaTags = document.querySelectorAll('meta[name = "keywords"], meta[property = "keywords"]');
+    const keywords = [];
 
-    if (!keywords || keywords.trim() === '') {
-        const descriptionMeta = document.querySelector('meta[name = "description"]');
-        const description = descriptionMeta ? descrptionMeta.getAttribute('content'): '';
-
-        if (description && description.trim() !== '') {
-            keywords = description;
-        } else {
-            keywords = document.title;
+    metaTags.forEach(tag => {
+        const content = tag.getAttribute('content');
+        if (content) {
+            keywords.push(content.split(',').map(keyword => keyword.trim()));
         }
-    }
-
-    return {
-        keywords: keywords || '',
-        description: document.querySelector('meta[name = "description"]')?.getAttribute('content') || '',
-        title: document.title || '',
-        url: window.location.href
-    };
+    })
+    return keywords;
 }
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === 'getMetaInfo') {
-        // Extract and return meta information
-        const metaInfo = extractMetaInfo();
-        sendResponse(metaInfo);
-    }
-    return true; // Required for asynchronous response
-});
-
-const metaInfo = extractMetaInfo();
 chrome.runtime.sendMessage({
-    action: 'metaInfoExtracted',
-    data: metaInfo
+    action: "keywordsExtractor",
+    keywords: extractMetaInfo()
 });
