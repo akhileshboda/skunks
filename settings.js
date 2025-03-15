@@ -183,6 +183,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.backgroundColor = colorValues.bg;
         document.body.style.color = colorValues.text;
 
+        const headings = document.querySelectorAll('h1, h2, h3');
+        headings.forEach(heading => {
+            heading.style.fontSize = currentFontSize + 'px';
+        });
+
         console.log("Settings applied to document:", {
             color: currentColor,
             font: currentFont,
