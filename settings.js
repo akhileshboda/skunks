@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedColor = getColorValues(selectedColorValue);
         const selectedFont = getFontFamily(fontSelect.value);
         const selectedFontSize = fontSizeSlider.value;
+
     }
 
     function saveSettings() {
@@ -187,6 +188,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Apply to the document
         document.body.style.fontFamily = fontFamily;
         document.body.style.fontSize = currentFontSize + 'px';
+        const headings = document.querySelectorAll('h1, h2, h3');
+        headings.forEach(heading => {
+            heading.style.fontSize = currentFontSize + 'px';
+        });
         document.body.style.backgroundColor = colorValues.bg;
         document.body.style.color = colorValues.text;
 
