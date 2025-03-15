@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b70b5cf7-380a-4a4e-8cf3-1125479bb731" name="Changes" comment="script.js file is added with real-time monitor algorithm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaExtractor.js" beforeDir="false" afterPath="$PROJECT_DIR$/metaExtractor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/searchHandler.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +43,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -114,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742041953347</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="script.js file is added with real-time monitor algorithm">
+      <option name="closed" value="true" />
+      <created>1742048982548</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1742048982548</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
