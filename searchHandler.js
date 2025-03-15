@@ -1,5 +1,3 @@
-// background.js - Handles YouTube search operations for the current tab
-
 // Function to perform a YouTube search using the provided keywords
 function performYouTubeSearch(keywords) {
     // Clean up the keywords
