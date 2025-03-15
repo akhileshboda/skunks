@@ -10,22 +10,20 @@ const keywords = [
     "emergency", "withdraw", "price cut", "expansion", "growth", "loss",
     "profit", "announcement", "restructuring", "layoff", "bankruptcy",
     "new product", "survey", "research", "warning", "protest", "investment opportunity",
-    "JS", "HTML", "CSS", "API", "UI", "UX", "SQL", "React", "Python", "JavaScript"
+    "JS", "HTML", "CSS", "API", "UI", "UX", "SQL", "React", "Python", "JavaScript", "PHP", "Java", "C++",
+    "C#", "C", "Bootstrap", "BS3", "BS4", "BS5", "MySQL", "Excel", "XML", "Django", "Numpy",
+    "Pandas","Typescript", "TS", "Git", "MongoDB", "R", "Kotlin"
 ];
 
-//add like meta tag and look for keyword in meta tag
-//split into array and look for keyword
-//look at the url and see if its .edu, .org, or like .gov
-
-//this algorithm stored keywords
 const keywordCounts = {};
-keywords.forEach(keyword => keywordCounts[keyword] = 0); // Fixed typo: keywword → keyword
+keywords.forEach(keyword => keywordCounts[keyword] = 0);
 
-let lastAlertTimestamp = 0; // Renamed from lastAlertTime for consistency
+let lastAlertTimestamp = 0;
 let pendingAlertTimer = null;
 const cooldown = 60000;
 
-function checkKeywords(text) { // Fixed function name: checkKeyword → checkKeywords
+// Function to check a text string for keywords
+function checkKeywords(text) {
     if (!text || typeof text !== "string") {
         return false;
     }
@@ -47,9 +45,63 @@ function checkKeywords(text) { // Fixed function name: checkKeyword → checkKey
     return foundAny;
 }
 
+// Function to extract and check metadata from the page
+function checkMetadata() {
+    console.log("Checking page metadata...");
+    let foundAny = false;
+    let metadataFound = false;
+
+    // Check meta tags (keywords, description, title, etc.)
+    const metaTags = document.querySelectorAll('meta[name="keywords"], meta[name="description"], meta[property="og:title"], meta[property="og:description"], meta[name="twitter:title"], meta[name="twitter:description"]');
+
+    if (metaTags.length > 0) {
+        metadataFound = true;
+        console.log(`Found ${metaTags.length} metadata tags to analyze`);
+
+        metaTags.forEach(tag => {
+            const content = tag.getAttribute('content');
+            if (content && checkKeywords(content)) {
+                foundAny = true;
+            }
+        });
+    }
+
+    // Check page title
+    const pageTitle = document.title;
+    if (pageTitle) {
+        metadataFound = true;
+        console.log("Checking page title");
+        if (checkKeywords(pageTitle)) {
+            foundAny = true;
+        }
+    }
+
+    // Check schema.org metadata (JSON-LD)
+    const jsonLdElements = document.querySelectorAll('script[type="application/ld+json"]');
+    if (jsonLdElements.length > 0) {
+        metadataFound = true;
+        console.log(`Found ${jsonLdElements.length} JSON-LD metadata blocks`);
+
+        jsonLdElements.forEach(script => {
+            try {
+                const jsonData = JSON.parse(script.textContent);
+                // Convert to string to check for keywords
+                const jsonString = JSON.stringify(jsonData);
+                if (checkKeywords(jsonString)) {
+                    foundAny = true;
+                }
+            } catch (e) {
+                console.log("Error parsing JSON-LD:", e.message);
+            }
+        });
+    }
+
+    return { foundKeywords: foundAny, hasMetadata: metadataFound };
+}
+
 function getTopKeyword() {
     let topKeyword = null;
-    let maxCount = 0; // Fixed variable name: count → maxCount
+    let maxCount = 0;
 
     for (const [keyword, count] of Object.entries(keywordCounts)) {
         if (count > maxCount) {
@@ -60,7 +112,7 @@ function getTopKeyword() {
     return {keyword: topKeyword, count: maxCount};
 }
 
-function logTopKeyword() { // Renamed function: topKeyword → logTopKeyword
+function logTopKeyword() {
     const {keyword, count} = getTopKeyword();
 
     if (keyword && count > 0) {
@@ -73,21 +125,19 @@ function logTopKeyword() { // Renamed function: topKeyword → logTopKeyword
 }
 
 function showTopKeyword() {
-    const currentTime = Date.now(); // Fixed typo: currenTime → currentTime
+    const currentTime = Date.now();
 
-    // Fixed logic: only clear timer if it exists
     if (pendingAlertTimer) {
         clearTimeout(pendingAlertTimer);
         pendingAlertTimer = null;
     }
 
-    // Fixed parentheses placement and variable name
     if ((currentTime - lastAlertTimestamp) >= cooldown) {
-        const {keyword, count} = getTopKeyword(); // Fixed function name: getTopword → getTopKeyword
+        const {keyword, count} = getTopKeyword();
 
         if (keyword && count > 0) {
             alert(`🏆 Top keyword: "${keyword}" with ${count} occurrence(s)`);
-            lastAlertTimestamp = currentTime; // Fixed typo: lasstAlertTimestamp → lastAlertTimestamp
+            lastAlertTimestamp = currentTime;
             console.log(`Alert shown at ${new Date().toLocaleTimeString()}`);
         }
     } else {
@@ -102,22 +152,36 @@ function showTopKeyword() {
 
 function scanPage() {
     console.log(`\nScanning page at ${new Date().toLocaleTimeString()}...`);
-    let foundAny = false;
 
-    const elements = document.querySelectorAll("body, body *:not(script):not(style):not(noscript)");
-    elements.forEach(el => {
-        if (el.innerText && checkKeywords(el.innerText)) { // Fixed function name
-            foundAny = true;
-        }
-    });
+    // First check metadata
+    const { foundKeywords, hasMetadata } = checkMetadata();
+
+    // If metadata has keywords or no metadata exists, scan page content
+    let foundInContent = false;
+    if (!foundKeywords || !hasMetadata) {
+        console.log(hasMetadata ?
+            "No keywords found in metadata, checking page content..." :
+            "No metadata found, checking page content...");
+
+        const elements = document.querySelectorAll("body, body *:not(script):not(style):not(noscript)");
+        elements.forEach(el => {
+            if (el.innerText && checkKeywords(el.innerText)) {
+                foundInContent = true;
+            }
+        });
+    } else {
+        console.log("Keywords found in metadata, skipping content scan");
+    }
 
     console.log("Scan complete");
 
-    if (foundAny) {
-        logTopKeyword(); // Fixed function name
+    const anyFound = foundKeywords || foundInContent;
+    if (anyFound) {
+        logTopKeyword();
         showTopKeyword();
     }
-    return foundAny;
+
+    return anyFound;
 }
 
 const observer = new MutationObserver(mutations => {
@@ -125,12 +189,22 @@ const observer = new MutationObserver(mutations => {
 
     mutations.forEach(mutation => {
         mutation.addedNodes.forEach(node => {
-            if (node.nodeType === Node.TEXT_NODE && node.textContent) {
-                if (checkKeywords(node.textContent)) { // Fixed function name
+            // Check if it's a metadata element
+            if (node.nodeName === 'META' ||
+                (node.nodeName === 'SCRIPT' && node.getAttribute('type') === 'application/ld+json')) {
+                // Re-check all metadata since it's hard to check just one
+                const { foundKeywords } = checkMetadata();
+                if (foundKeywords) {
+                    foundAny = true;
+                }
+            }
+            // Otherwise check normal content
+            else if (node.nodeType === Node.TEXT_NODE && node.textContent) {
+                if (checkKeywords(node.textContent)) {
                     foundAny = true;
                 }
             } else if (node.nodeType === Node.ELEMENT_NODE && node.innerText) {
-                if (checkKeywords(node.innerText)) { // Fixed function name
+                if (checkKeywords(node.innerText)) {
                     foundAny = true;
                 }
             }
@@ -138,7 +212,7 @@ const observer = new MutationObserver(mutations => {
     });
 
     if(foundAny) {
-        logTopKeyword(); // Fixed function name
+        logTopKeyword();
     }
 });
 
@@ -146,15 +220,21 @@ console.log("Keyword monitoring system starting...");
 
 scanPage();
 
+observer.observe(document.head, {
+    childList: true,
+    subtree: true,
+    characterData: true
+});
+
 observer.observe(document.body, {
     childList: true,
     subtree: true,
     characterData: true
 });
 
-console.log("Algorithm activated");
+console.log("Algorithm activated - monitoring metadata and content");
 
 setInterval(() => {
-    console.log("Algorithm will be run in 1 min");
+    console.log("\nScheduled scan triggered");
     scanPage();
 }, cooldown);

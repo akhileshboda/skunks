@@ -4,6 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="b70b5cf7-380a-4a4e-8cf3-1125479bb731" name="Changes" comment="establish extension window size, basic entry created">
+      <change afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/nav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheets/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/styles.css" afterDir="false" />
     <list default="true" id="b70b5cf7-380a-4a4e-8cf3-1125479bb731" name="Changes" comment="- help">
       <change afterPath="$PROJECT_DIR$/apply-settings.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/settings.js" afterDir="false" />
@@ -41,6 +49,12 @@
     &quot;assignee&quot;: &quot;pandgey&quot;
   }
 }</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/akhileshboda/skunks.git&quot;,
+    &quot;accountId&quot;: &quot;ce6432b5-0e3d-4091-98d9-0a3027ba8165&quot;
+  }
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/akhileshboda/skunks.git",
@@ -58,6 +72,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "nav-bar",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -90,6 +116,8 @@
       <updated>1741961708228</updated>
       <workItem from="1741961709821" duration="1187000" />
       <workItem from="1741999690367" duration="8948000" />
+      <workItem from="1742013065991" duration="116000" />
+      <workItem from="1742013186360" duration="10442000" />
       <workItem from="1742020045792" duration="6899000" />
     </task>
     <task id="LOCAL-00001" summary="script.js file is added with real-time monitor algorithm">
