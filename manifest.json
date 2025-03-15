@@ -8,10 +8,10 @@
     "default_popup": "index.html"
   },
   "icons": {
-    "16": "images/logo.jpeg",
-    "32": "images/logo.jpeg",
-    "64": "images/logo.jpeg",
-    "128": "images/logo.jpeg"
+    "16": "images/logo.png",
+    "32": "images/logo.png",
+    "64": "images/logo.png",
+    "128": "images/logo.png"
   },
   "web_accessible_resources": [
     {
