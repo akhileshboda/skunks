@@ -34,6 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.body.style.fontFamily = fontFamily;
         document.body.style.fontSize = settings.fontSize + 'px';
+        const headings = document.querySelectorAll('h1, h2, h3');
+        headings.forEach(heading => {
+            heading.style.fontSize = settings.fontSize + 'px';
+        });
         document.body.style.backgroundColor = colorValues.bg;
         document.body.style.color = colorValues.text;
     }

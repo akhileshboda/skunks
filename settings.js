@@ -34,29 +34,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load saved settings if they exist
     loadSettings();
 
-    // Initialize preview with current settings
-    updatePreview();
-
     // Apply settings to entire document initially
     applySettings();
 
     // Event listeners
     colorRadios.forEach(radio => {
         radio.addEventListener('change', function() {
-            updatePreview();
             applySettings(); // Apply settings to entire document when color changes
         });
     });
 
     fontSelect.addEventListener('change', function() {
-        updatePreview();
         applySettings(); // Apply settings to entire document when font changes
     });
 
     fontSizeSlider.addEventListener('input', function() {
         // Update the display value while sliding
         fontSizeValue.textContent = this.value + 'px';
-        updatePreview();
         applySettings(); // Apply settings to entire document while sliding
     });
 
@@ -98,13 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return fontMap[fontValue] || fontMap['default'];
     }
 
-    function updatePreview() {
-        const selectedColorValue = document.querySelector('input[name="colour"]:checked').value;
-        const selectedColor = getColorValues(selectedColorValue);
-        const selectedFont = getFontFamily(fontSelect.value);
-        const selectedFontSize = fontSizeSlider.value;
-
-    }
 
     function saveSettings() {
         const settings = {
@@ -180,6 +167,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Apply to the document
         document.body.style.fontFamily = fontFamily;
         document.body.style.fontSize = currentFontSize + 'px';
+        const headings = document.querySelectorAll('h1, h2, h3');
+        headings.forEach(heading => {
+            heading.style.fontSize = currentFontSize + 'px';
+        });
         document.body.style.backgroundColor = colorValues.bg;
         document.body.style.color = colorValues.text;
 
