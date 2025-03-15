@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Settings</title>
+        <link href="stylesheets/styles.css" rel="stylesheets"/>
+      </head>
+      
+      <body>
+
+        <h3>Colour</h3>
+        <form>
+            <fieldset>
+                <input id="default" type="radio" name="colour" value="default" checked> <label for="default">Default</label> <!-- What will default be? Monochrome? -->
+                <input id="pink" type="radio" name="colour" value="pink"> <label for="pink">Pink</label>
+                <input id="blue" type="radio" name="colour" value="blue"> <label for="blue">Blue</label>
+                <input id="green" type="radio" name="colour" value="green"> <label for="green">Green</label>
+                <input id="red" type="radio" name="colour" value="red"> <label for="red">Red</label>
+                <input id="purple" type="radio" name="colour" value="purple"> <label for="purple">Purple</label>
+                <input id="yellow" type="radio" name="colour" value="yellow"> <label for="yellow">Yellow</label>
+                <input id="orange" type="radio" name="colour" value="orange"> <label for="orange">Orange</label>
+                <input id="beige" type="radio" name="colour" value="beige"> <label for="beige">Beige</label>
+                <input id="bronze" type="radio" name="colour" value="bronze"> <label for="bronze">Bronze</label>
+            </fieldset>
+        </form>
+
+        <h3>Font</h3>
+        <form>
+            <fieldset>
+                <input id="default" type="radio" name="font" value="default" checked> <label for="default">Default</label> <!-- What will default be? Arial? -->
+                <input id="times" type="radio" name="font" value="times"> <label for="times">Times New Roman</label> 
+                <input id="mont" type="radio" name="font" value="mont"> <label for="mont">Montserrat</label> 
+                <input id="comic" type="radio" name="font" value="comic"> <label for="comic">Comic Sans</label> 
+            </fieldset>
+        </form>
+
+        <h3>Font Size</h3>
+        <div class="fontsize">
+            <input type="range" min="1" max="100" value="50" class="slider" id="fontsize">
+        </div>
+
+      </body>

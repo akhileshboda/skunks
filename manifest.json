@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "skunk extension",
+  "name": "SmartStudy",
   "version": "1.0",
   "description": "A Chrome Extension to support learning with video suggestions.",
   "permissions": ["activeTab"],
