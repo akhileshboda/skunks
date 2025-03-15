@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 chrome.windows.create({
                     url: chrome.runtime.getURL('settings.html'),
                     type: 'popup',
-                    width: 400,
+                    width: 700,
                     height: 500
                 });
             });

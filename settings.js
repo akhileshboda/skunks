@@ -18,8 +18,18 @@ document.addEventListener('DOMContentLoaded', function() {
     saveButton.id = 'saveButton';
     saveButton.className = 'btn btn-primary';
     saveButton.style.marginTop = '20px';
+    saveButton.style.marginLeft= '295px';
+    saveButton.style.marginRight= '295px';
     saveButton.textContent = 'Save Settings';
     document.body.appendChild(saveButton);
+
+    const container = document.createElement('div');
+    container.style.textAlign = 'center';
+    container.style.width = '100%'; // Make sure it spans the full width
+    container.appendChild(saveButton);
+
+// Add the container to the document
+    document.body.appendChild(container);
 
     // Load saved settings if they exist
     loadSettings();
