@@ -3,7 +3,7 @@
   "name": "TubeTutor",
   "version": "1.0",
   "description": "A Chrome Extension to support learning with video suggestions.",
-  "permissions": ["activeTab"],
+  "permissions": ["tabs", "storage"],
   "action": {
     "default_popup": "index.html"
   },
