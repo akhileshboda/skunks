@@ -10,6 +10,9 @@
     "scripting",
     "contextMenus"
   ],
+  "background": {
+    "service_worker": "metaExtractor.js"
+  },
   "action": {
     "default_popup": "index.html"
   },
@@ -21,7 +24,6 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["listeningScript.js"],
       "matches": ["<all_urls>"]
     }
   ]
