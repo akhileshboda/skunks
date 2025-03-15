@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     container.style.width = '100%'; // Make sure it spans the full width
     container.appendChild(saveButton);
 
-// Add the container to the document
+    // Add the container to the document
     document.body.appendChild(container);
 
     // Load saved settings if they exist
@@ -60,12 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
         applySettings(); // Apply settings to entire document while sliding
     });
 
+    // Modified save button click event handler
     saveButton.addEventListener('click', function() {
         saveSettings();
         applySettings(); // Apply settings to entire document when saving
-    });
-    saveButton.addEventListener('click', function() {
-        chrome.runtime.reload();
     });
 
     // Functions
@@ -103,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedColor = getColorValues(selectedColorValue);
         const selectedFont = getFontFamily(fontSelect.value);
         const selectedFontSize = fontSizeSlider.value;
-
     }
 
     function saveSettings() {
@@ -122,7 +119,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Settings saved to Chrome storage");
             });
         }
-        alert('Settings saved successfully!');
+
+        // Show alert and close window after user acknowledges
+        window.alert('Settings saved successfully!');
+
+        // Close the window after the alert is dismissed
+        window.close();
+
+        // Reload the extension if needed
+        if (chrome && chrome.runtime) {
+            chrome.runtime.reload();
+        }
 
         // Check what was saved - for debugging
         console.log("Settings saved:", JSON.parse(localStorage.getItem('tubeTutorSettings')));
