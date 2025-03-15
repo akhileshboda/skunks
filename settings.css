@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    transition: all 0.3s ease;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+input[type="radio"]:first-of-type {
+    margin-left: 0;
+}
+
+select, .slider {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Color Themes */
+.color-default {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.color-pink {
+    background-color: #ffebee;
+    color: #c2185b;
+}
+
+.color-blue {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.color-green {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.color-red {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.color-purple {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.color-yellow {
+    background-color: #fffde7;
+    color: #fbc02d;
+}
+
+.color-orange {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.color-beige {
+    background-color: #f5f5dc;
+    color: #f0ebd8;
+}
+
+.color-bronze {
+    background-color: #f0e6d2;
+    color: #a1887f;
+}
