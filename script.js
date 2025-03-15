@@ -18,3 +18,4 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.error("Error loading navigation:", error));
 });
+
