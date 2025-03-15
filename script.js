@@ -30,6 +30,8 @@ function checkForKeywords(text) {
             keywordCounts[keyword] += matches.length;
             console.log(`🔥 Found "${keyword}" ${matches.length} time(s) in: "${text.trim().substring(0, 100)}..."`)
         }
+
+        //
         // if (text.toLowerCase().includes(keyword.toLowerCase())) {
         //     console.log(`🔥 Keyword detected: "${keyword}" in: "${text.trim().substring(0, 100)}..."`);
         //     alert(`🔥 Keyword detected: "${keyword}"`);
