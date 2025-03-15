@@ -18,5 +18,11 @@
     "32": "images/logo.png",
     "64": "images/logo.png",
     "128": "images/logo.png"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["listeningScript.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
