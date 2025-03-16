@@ -2,7 +2,7 @@ let toggle = document.getElementById("toggle");
 
 function changeDisplay(isChecked){
     let searchDiv = document.getElementById("searchDiv");
-    console.log(searchDiv.innerHTML);
+    //console.log(searchDiv.innerHTML);
     console.log(searchDiv.style.display);
     if(isChecked){
         searchDiv.style.display = "block";
