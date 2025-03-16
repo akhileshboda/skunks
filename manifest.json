@@ -24,15 +24,15 @@
       "resources": ["listeningScript.js"],
       "matches": ["<all_urls>"]
     }
-  ]
+  ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"], 
       "js": ["content_script.js"]
     }
-  ]
+  ],
   "background": {
     "service_worker": "receiveKeywords.js",
     "type": "module"
-  },
+  }
 }
