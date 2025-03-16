@@ -45,5 +45,12 @@ function getKeywords(){
 
 console.log(getKeywords());
 
-chrome.runtime.sendMessage(getKeywords);
+// chrome.runtime.sendMessage(getKeywords);
+
+var port = chrome.runtime.connect({name: "keywords"});
+port.postMessage({keyWords: getKeywords()});
+port.onMessage.addListener(function(msg){
+    console.log(response);
+    return true;
+})
 
