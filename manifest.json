@@ -31,4 +31,8 @@
       "js": ["content_script.js"]
     }
   ]
+  "background": {
+    "service_worker": "receiveKeywords.js",
+    "type": "module"
+  },
 }
